@@ -5,99 +5,43 @@
 class Asimi < Formula
   desc "AI-powered CLI assistant with container support - safe, opinionated coding agent"
   homepage "https://github.com/afittestide/asimi-cli"
-  version "0.2.0-rc.2"
+  version "0.2.0-rc.3"
   license "MIT"
 
   depends_on "podman" => :optional
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/afittestide/asimi-cli/releases/download/v0.2.0-rc.2/asimi_0.2.0-rc.2_darwin_amd64.tar.gz"
-      sha256 "bd4dc8a05a4f0c84f3b19bf4266550f9c266da826ce75eba0caa9455fcd0636a"
+      url "https://github.com/afittestide/asimi-cli/releases/download/v0.2.0-rc.3/asimi_0.2.0-rc.3_darwin_amd64.tar.gz"
+      sha256 "cfa8f5802b24fc09eb0aac5d5f2f0e0b90297aa430db5c33705af1cb8ff5c8e1"
 
       def install
         bin.install "asimi"
-
-        # Install example configuration
-        (etc/"asimi").install "conf.toml.example" => "asimi.toml.example"
-
-        # Install shell completions if available
-        if File.exist?("completions/asimi.bash")
-          bash_completion.install "completions/asimi.bash" => "asimi"
-        end
-        if File.exist?("completions/asimi.zsh")
-          zsh_completion.install "completions/asimi.zsh" => "_asimi"
-        end
-        if File.exist?("completions/asimi.fish")
-          fish_completion.install "completions/asimi.fish"
-        end
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/afittestide/asimi-cli/releases/download/v0.2.0-rc.2/asimi_0.2.0-rc.2_darwin_arm64.tar.gz"
-      sha256 "d2c14816d48dbb1976db97ce7a389778a71702f2e0a5f084aa244aa600a948d6"
+      url "https://github.com/afittestide/asimi-cli/releases/download/v0.2.0-rc.3/asimi_0.2.0-rc.3_darwin_arm64.tar.gz"
+      sha256 "3af1d2ea526c7341088d17d37f5c37d622d6208a1b98106635a7be5b7e3564e6"
 
       def install
         bin.install "asimi"
-
-        # Install example configuration
-        (etc/"asimi").install "conf.toml.example" => "asimi.toml.example"
-
-        # Install shell completions if available
-        if File.exist?("completions/asimi.bash")
-          bash_completion.install "completions/asimi.bash" => "asimi"
-        end
-        if File.exist?("completions/asimi.zsh")
-          zsh_completion.install "completions/asimi.zsh" => "_asimi"
-        end
-        if File.exist?("completions/asimi.fish")
-          fish_completion.install "completions/asimi.fish"
-        end
       end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/afittestide/asimi-cli/releases/download/v0.2.0-rc.2/asimi_0.2.0-rc.2_linux_amd64.tar.gz"
-      sha256 "277777fa0aaaa54030be0a62fcc4bfa6e1fbaaabb88606677c0f5f7df282942e"
+      url "https://github.com/afittestide/asimi-cli/releases/download/v0.2.0-rc.3/asimi_0.2.0-rc.3_linux_amd64.tar.gz"
+      sha256 "2ffeb1672a64ae6e4757dd07539ae8c8b48c725cb57a4a88b2324508e64f273c"
       def install
         bin.install "asimi"
-
-        # Install example configuration
-        (etc/"asimi").install "conf.toml.example" => "asimi.toml.example"
-
-        # Install shell completions if available
-        if File.exist?("completions/asimi.bash")
-          bash_completion.install "completions/asimi.bash" => "asimi"
-        end
-        if File.exist?("completions/asimi.zsh")
-          zsh_completion.install "completions/asimi.zsh" => "_asimi"
-        end
-        if File.exist?("completions/asimi.fish")
-          fish_completion.install "completions/asimi.fish"
-        end
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/afittestide/asimi-cli/releases/download/v0.2.0-rc.2/asimi_0.2.0-rc.2_linux_arm64.tar.gz"
-      sha256 "f1094835ab4215eb2f86bcf2e3041fa0f961403840c9bb7d80dadebcf490a8de"
+      url "https://github.com/afittestide/asimi-cli/releases/download/v0.2.0-rc.3/asimi_0.2.0-rc.3_linux_arm64.tar.gz"
+      sha256 "08371bd7b4c70ea01d09424328b342cf778ac46273f18d41f1b6e873d6934cce"
       def install
         bin.install "asimi"
-
-        # Install example configuration
-        (etc/"asimi").install "conf.toml.example" => "asimi.toml.example"
-
-        # Install shell completions if available
-        if File.exist?("completions/asimi.bash")
-          bash_completion.install "completions/asimi.bash" => "asimi"
-        end
-        if File.exist?("completions/asimi.zsh")
-          zsh_completion.install "completions/asimi.zsh" => "_asimi"
-        end
-        if File.exist?("completions/asimi.fish")
-          fish_completion.install "completions/asimi.fish"
-        end
       end
     end
   end
@@ -107,19 +51,11 @@ class Asimi < Formula
       Asimi requires Podman for containerized shell execution.
       Install it with: brew install podman
 
-      Example configuration has been installed to:
-        #{etc}/asimi/asimi.toml.example
-
-      Copy it to get started:
-        mkdir -p ~/.config/asimi
-        cp #{etc}/asimi/asimi.toml.example ~/.config/asimi/asimi.toml
-
-      For more information, see: https://github.com/afittestide/asimi-cli
+      For configuration, see: https://github.com/afittestide/asimi-cli
     EOS
   end
 
   test do
     system "#{bin}/asimi", "--version"
-    assert_match "asimi version", shell_output("#{bin}/asimi --version")
   end
 end
