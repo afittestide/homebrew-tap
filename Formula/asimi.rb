@@ -5,23 +5,23 @@
 class Asimi < Formula
   desc "AI-powered CLI assistant with container support - safe, opinionated coding agent"
   homepage "https://github.com/afittestide/asimi"
-  version "0.13.7"
+  version "0.14.1"
   license "MIT"
 
   depends_on "podman" => :optional
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/afittestide/asimi/releases/download/v0.13.7/asimi_0.13.7_darwin_amd64.tar.gz"
-      sha256 "243769d9d4c7d16b953e343eefed9063ee6943b16465c4c8c6511ebd19596c95"
+      url "https://github.com/afittestide/asimi/releases/download/v0.14.1/asimi_0.14.1_darwin_amd64.tar.gz"
+      sha256 "30fca224e499ec90a620dd70966b8ae084f55fedceb76f261c0e4cb7203d90d9"
 
       define_method(:install) do
         bin.install "asimi"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/afittestide/asimi/releases/download/v0.13.7/asimi_0.13.7_darwin_arm64.tar.gz"
-      sha256 "ffec290708ba9151d8555465e7907542b5ee517c465602811a0cda5cb4408eef"
+      url "https://github.com/afittestide/asimi/releases/download/v0.14.1/asimi_0.14.1_darwin_arm64.tar.gz"
+      sha256 "74c3fc4def55a03c426f0b8c0888e92b31d9cb2182e5a1c36d308a66847e5bb1"
 
       define_method(:install) do
         bin.install "asimi"
@@ -31,15 +31,15 @@ class Asimi < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/afittestide/asimi/releases/download/v0.13.7/asimi_0.13.7_linux_amd64.tar.gz"
-      sha256 "3207688f59af399c99e232fda1bf4f84961cb0b6626348d9f55f84a26b736bdd"
+      url "https://github.com/afittestide/asimi/releases/download/v0.14.1/asimi_0.14.1_linux_amd64.tar.gz"
+      sha256 "a93db362bd65be55e56b4104f0e94a9c1117e80c4020dd603449c16610b33afc"
       define_method(:install) do
         bin.install "asimi"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/afittestide/asimi/releases/download/v0.13.7/asimi_0.13.7_linux_arm64.tar.gz"
-      sha256 "e8e11bc3c8fbcaf0bbacee22b5b0aaf69b2246e463c1a53c4196d6f6eedfcc5b"
+      url "https://github.com/afittestide/asimi/releases/download/v0.14.1/asimi_0.14.1_linux_arm64.tar.gz"
+      sha256 "d1f02f18bef9e9a8f9afd0c8ab2e7ac1f85074ace7dbc4c41bb98efd574bb58b"
       define_method(:install) do
         bin.install "asimi"
       end
